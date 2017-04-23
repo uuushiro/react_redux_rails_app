@@ -1,4 +1,5 @@
-import { ADD_TODO, TOGGLE_TODO } from '../constants/action-types'
+import { ADD_TODO, TOGGLE_TODO, SET_TODOS } from '../constants/action-types'
+import store from '../stores/store'
 
 const todo = (state = {}, action) => {
   switch (action.type) {
@@ -33,6 +34,10 @@ const todos = (state = [], action) => {
       return state.map(t =>
         todo(t, action)
       )
+    case SET_TODOS:
+      return store.dispatch(SET_TODOS).map(t =>
+        todo(t, action)
+      );
     default:
       return state
   }

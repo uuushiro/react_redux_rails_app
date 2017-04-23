@@ -1,3 +1,3 @@
-%w(hello goodmorning goodevening).each do |message|
-  Todo.create!(message: message)
+%w(hello goodmorning goodevening).each do |text|
+  Todo.create!(text: text)
 end

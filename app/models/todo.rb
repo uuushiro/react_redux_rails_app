@@ -3,7 +3,8 @@
 # Table name: todos
 #
 #  id         :integer          not null, primary key
-#  message    :text(65535)
+#  text       :text(65535)
+#  completed  :boolean          default("0"), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
