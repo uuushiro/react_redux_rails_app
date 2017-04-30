@@ -1,4 +1,4 @@
-import { ADD_TODO, SET_VISIBILITY_FILTER, TOGGLE_TODO, SET_TODOS, TRIMMED_TODO, ADD_TODO_STARTED, FETCH_TODOS_START, FETCH_TODOS_DONE, FETCH_TODOS_ERROR, POST_TODO_ERROR } from '../constants/action-types'
+import { ADD_TODO, SET_VISIBILITY_FILTER, TOGGLE_TODO, GET_TOGGLE_TODO, SET_TODOS, TRIMMED_TODO, ADD_TODO_STARTED, FETCH_TODOS_START, FETCH_TODOS_DONE, FETCH_TODOS_ERROR, POST_TODO_ERROR } from '../constants/action-types'
 
 let nextTodoId = 0
 
@@ -15,6 +15,19 @@ export const setVisibilityFilter = (filter) => {
     type: SET_VISIBILITY_FILTER,
     filter
   }
+}
+
+export const getToggleTodo = (id) => (dispatch) => {
+  fetch('todos/' + id + '/toggle', {
+    headers: {
+      'content-type': 'application/json'
+    },
+    method: 'get'
+  })
+  .then(checkStatus)
+  .then(response => response.json())
+  .then(data => dispatch({type: TOGGLE_TODO, id: data.id}))
+  .catch(error => dispatch({type: POST_TODO_ERROR, error}))
 }
 
 export const toggleTodo = (id) => {
