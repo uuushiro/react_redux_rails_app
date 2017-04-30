@@ -7,3 +7,4 @@ export const FETCH_TODOS_START = 'FETCH_TODOS_START';
 export const FETCH_TODOS_DONE = 'FETCH_TODOS_DONE';
 export const FETCH_TODOS_ERROR = 'FETCH_TODOS_ERROR';
 export const SET_TODOS = 'SET_TODOS';
+export const POST_TODO_ERROR = 'POST_TODO_ERROR';

@@ -1,8 +1,10 @@
-import { ADD_TODO, TOGGLE_TODO, SET_TODOS } from '../constants/action-types'
+import { ADD_TODO, TOGGLE_TODO, SET_TODOS, FETCH_TODOS_DONE } from '../constants/action-types'
 import store from '../stores/store'
 
 const todo = (state = {}, action) => {
   switch (action.type) {
+    case FETCH_TODOS_DONE:
+      return state
     case ADD_TODO:
       return {
         id: action.id,
@@ -25,6 +27,9 @@ const todo = (state = {}, action) => {
 
 const todos = (state = [], action) => {
   switch (action.type) {
+    case FETCH_TODOS_DONE:
+      return action.data.map(t =>
+        todo(t, action))
     case ADD_TODO:
       return [
         ...state,
